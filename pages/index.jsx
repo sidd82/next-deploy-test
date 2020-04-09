@@ -4,7 +4,7 @@ import Link from "next/link";
 const Index = ({ name }) => {
   return (
     <div>
-      <h1>Hello World! {name}</h1>
+      <h1>Hello World {name}</h1>
       <div>
         <Link href="/about">
           <a>About</a>
