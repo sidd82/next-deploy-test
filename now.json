@@ -1,0 +1,9 @@
+{
+  "build": {
+    "env": {
+      "ENVIORNMENT": "@enviornment",
+      "DEV_DOMAIN_API": "@devDomainApi",
+      "PROD_DOMAIN_API": "@proddomainapi"
+    }
+  }
+}
