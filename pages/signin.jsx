@@ -18,7 +18,7 @@ const Signin = () => {
         `https://api.one-o.in/api/auth/user/sign-in`,
         data,
         {
-          withCredentials: "same-origin",
+          withCredentials: "include",
           headers: {
             "x-api-key": process.env.X_API_KEY,
           },
