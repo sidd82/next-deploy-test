@@ -15,10 +15,11 @@ const Signin = () => {
     try {
       e.preventDefault();
       const signUpRes = await Axios.post(
-        `${apiUrl}/api/auth/user/sign-in`,
+        `https://api.one-o.in/api/auth/user/sign-in`,
         data,
         {
           withCredentials: true,
+          credentials: "same-origin",
           headers: {
             "x-api-key": process.env.X_API_KEY,
           },
@@ -27,7 +28,7 @@ const Signin = () => {
       router.push("/");
       console.log(signUpRes);
     } catch (e) {
-      console.log(e.response.data);
+      console.log(e);
     }
   };
   return (
