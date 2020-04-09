@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import Axios from "axios";
 import apiUrl from "../config/apiUrl";
+import { useRouter } from "next/router";
 
 const Signin = () => {
+  const router = useRouter();
   const [data, setData] = useState({
     email: "psiddhesh14@gmail.com",
     password: "Si78757875",
@@ -22,6 +24,7 @@ const Signin = () => {
           },
         }
       );
+      router.push("/");
       console.log(signUpRes);
     } catch (e) {
       console.log(e.response.data);
