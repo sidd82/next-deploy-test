@@ -1,20 +1,32 @@
 import React, { useState } from "react";
 import Axios from "axios";
-import Url from "../config/apiUrl";
+import apiUrl from "../config/apiUrl";
 
 const Signup = () => {
   const [data, setData] = useState({
     name: "Ramkrishna",
     email: "psiddhesh14@gmail.com",
-    hashedpassword: "Si78757875",
+    hashedPassword: "Si78757875",
     confirmedPassword: "Si78757875",
   });
 
-  const handleSignUpSubmit = (e) => {
-    e.preventDefault();
-    console.log(data);
-    console.log(Url);
-    // const signUpRes = Axios.post("");
+  const handleSignUpSubmit = async (e) => {
+    try {
+      e.preventDefault();
+      const signUpRes = await Axios.post(
+        `${apiUrl}/api/auth/user/sign-up`,
+        data,
+        {
+          withCredentials: true,
+          headers: {
+            "x-api-key": process.env.X_API_KEY,
+          },
+        }
+      );
+      console.log(signUpRes.data);
+    } catch (e) {
+      console.log(e.response.data);
+    }
   };
 
   return (
@@ -57,9 +69,9 @@ const Signup = () => {
             type="password"
             name="password"
             placeholder="Enter pasword"
-            value={data.hashedpassword}
+            value={data.hashedPassword}
             onChange={(e) =>
-              setData({ ...data, hashedpassword: e.target.value })
+              setData({ ...data, hashedPassword: e.target.value })
             }
           />
         </div>
