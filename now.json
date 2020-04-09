@@ -1,9 +1,9 @@
 {
   "build": {
     "env": {
-      "ENVIORNMENT": "@enviornment",
-      "DEV_DOMAIN_API": "@devdomainapi",
-      "PROD_DOMAIN_API": "@proddomainapi"
+      "ENVIORNMENT_NODE": "@enviornment",
+      "DEV_DOMAIN_API_NODE": "@devdomainapi",
+      "PROD_DOMAIN_API_NODE": "@proddomainapi"
     }
   }
 }
