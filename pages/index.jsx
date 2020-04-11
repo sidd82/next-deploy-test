@@ -49,6 +49,13 @@ const Index = ({ name }) => {
         <button onClick={handleSubmit}>Click</button>
       </div>
       <button
+        onClick={() => {
+          window.location.href = "https://dashboard.one-o.in";
+        }}
+      >
+        Dashboard
+      </button>
+      <button
         onClick={async () => {
           const auth2 = window.gapi.auth2.getAuthInstance();
           if (auth2 != null) {
