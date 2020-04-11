@@ -4,7 +4,8 @@
       "ENVIORNMENT_NODE": "@enviornment",
       "DEV_DOMAIN_API_NODE": "@devdomainapi",
       "PROD_DOMAIN_API_NODE": "@proddomainapi",
-      "X_API_KEY_NODE": "@xapikey"
+      "X_API_KEY_NODE": "@xapikey",
+      "GOOGLE_CLIENT_ID_WEB_NODE": "@googleclient"
     }
   }
 }

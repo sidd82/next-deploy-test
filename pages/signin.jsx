@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Axios from "axios";
 import apiUrl from "../config/apiUrl";
 import { useRouter } from "next/router";
+import GoogleLogin from "react-google-login";
 
 const Signin = () => {
   const router = useRouter();
@@ -15,10 +16,10 @@ const Signin = () => {
     try {
       e.preventDefault();
       const signUpRes = await Axios.post(
-        `https://api.one-o.in/api/auth/user/sign-in`,
+        `${apiUrl}/api/auth/user/sign-in`,
         data,
         {
-          withCredentials: "include",
+          withCredentials: true,
           headers: {
             "x-api-key": process.env.X_API_KEY,
           },
@@ -29,6 +30,34 @@ const Signin = () => {
     } catch (e) {
       console.log(e);
     }
+  };
+
+  const responseGoogleSuccess = async (res) => {
+    try {
+      const data = {
+        tokenId: res.tokenId,
+        platform: "web",
+        fingureId: "999",
+      };
+      const signUpRes = await Axios.post(
+        `${apiUrl}/api/auth/user/google-sign-in`,
+        data,
+        {
+          withCredentials: true,
+          headers: {
+            "x-api-key": process.env.X_API_KEY,
+          },
+        }
+      );
+      router.push("/");
+      console.log(signUpRes);
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
+  const responseGoogleError = (err) => {
+    console.log(err);
   };
   return (
     <div>
@@ -64,6 +93,18 @@ const Signin = () => {
           <button>Submit</button>
         </div>
       </form>
+
+      <GoogleLogin
+        clientId={process.env.GOOGLE_CLIENT_ID_WEB}
+        render={(renderProps) => (
+          <button onClick={renderProps.onClick} disabled={renderProps.disabled}>
+            Continue with Google
+          </button>
+        )}
+        uxMode="popup"
+        onSuccess={responseGoogleSuccess}
+        onFailure={responseGoogleError}
+      />
     </div>
   );
 };
